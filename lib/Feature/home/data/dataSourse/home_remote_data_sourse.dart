@@ -1,4 +1,4 @@
-import 'package:new_bookely_app/Feature/home/data/domain/entitis/Book_entity.dart';
+import 'package:new_bookely_app/Feature/home/data/domain/entitis/book_entity.dart';
 import 'package:new_bookely_app/Feature/home/data/model/booksmodels/booksmodels.dart';
 import 'package:new_bookely_app/core/utils/apiServes.dart';
 
