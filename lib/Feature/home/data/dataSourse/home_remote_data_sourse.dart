@@ -1,13 +1,16 @@
+import 'package:hive_flutter/adapters.dart';
 import 'package:new_bookely_app/Feature/home/data/domain/entitis/book_entity.dart';
 import 'package:new_bookely_app/Feature/home/data/model/booksmodels/booksmodels.dart';
+import 'package:new_bookely_app/Feature/splash/presentation/constant.dart';
 import 'package:new_bookely_app/core/utils/apiServes.dart';
+import 'package:new_bookely_app/core/utils/functions/save_data.dart';
 
-abstract class HomeRemodeDataSourse {
+abstract class HomeRemoteDataSourse {
   Future<List<BookEntity>> fetchFeatureBooks();
   Future<List<BookEntity>> fetchNewsBooks();
 }
 
-class HomeRemodeDataSourseImp extends HomeRemodeDataSourse {
+class HomeRemodeDataSourseImp extends HomeRemoteDataSourse {
   final ApiServes apiServes;
 
   HomeRemodeDataSourseImp(this.apiServes);
@@ -16,6 +19,7 @@ class HomeRemodeDataSourseImp extends HomeRemodeDataSourse {
     var data = await apiServes.get(
         endPoint: 'volumes?Filtering=free-ebooks&q=programing');
     List<BookEntity> books = getBooksList(data);
+    saveData(books, kfeatureBox);
     return books;
   }
 
